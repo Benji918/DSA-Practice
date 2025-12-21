@@ -1,22 +1,22 @@
 # Calculate Average temperature
-temp = []
-print('How many day\'s temperature?')
+temp = [] # O(1)
+print('How many day\'s temperature?')# O(1)
 
-while True:
-    counter = len(temp) + 1
-    user_input = input(f'Day {counter} high temp ')
+while True: # O(n)
+    counter = len(temp) + 1 # O(1)
+    user_input = input(f'Day {counter} high temp ') # O(1)
 
-    if user_input.lower() == 'done':
+    if user_input.lower() == 'done': # O(1)
         break
 
-    temp.append(int(user_input))
+    temp.append(int(user_input)) # 0(1)
 
-avg_temp = sum(temp)/len(temp)
-print(f'Average = {avg_temp}')
+avg_temp = sum(temp)/len(temp)  # O(1)
+print(f'Average = {avg_temp}')  # O(1)
 
-max_day_temp_value = max(temp)
-days_above_avg_temp = [v for v in temp if v > avg_temp]
-print(f'{len(days_above_avg_temp)} days(s) is above average')
+max_day_temp_value = max(temp)   # O(1)
+days_above_avg_temp = [v for v in temp if v > avg_temp]  # O(n)
+print(f'{len(days_above_avg_temp)} days(s) is above average')  # 0{1)
 
 
 
