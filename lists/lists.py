@@ -19,9 +19,6 @@ days_above_avg_temp = [v for v in temp if v > avg_temp]  # O(n)
 print(f'{len(days_above_avg_temp)} days(s) is above average')  # 0{1)
 
 
-
-
-
 def missing_number(arr, n):
     sum_of_n = n*(n+1)//2
     sum_of_array = sum(arr)
@@ -29,3 +26,9 @@ def missing_number(arr, n):
 
 
 print(missing_number([1, 2, 3, 4, 6], 6))
+
+
+
+
+
+
