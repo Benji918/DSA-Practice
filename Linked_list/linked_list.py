@@ -46,6 +46,12 @@ class Linkdedlist:
         current = self.head
         prev = None
 
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+            return
+
         for _ in range(index -1):
             prev = current
             print(prev.value)
@@ -65,6 +71,24 @@ class Linkdedlist:
             node = node.next
         return " -> ".join(result)
 
+    def traverse(self):
+        current = self.head
+        while current is not None:
+            print(current.value)
+            current = current.next
+
+    def search(self, value):
+        current = self.head
+        index = 0
+
+        while current:
+            if current.value == value:
+                return f'Search value -> {value}', f'Value index -> {index}'
+            current = current.next
+            index += 1
+
+        return None
+
 
 
 
@@ -75,7 +99,9 @@ linked_list.append(202)
 linked_list.prepend(10)
 linked_list.prepend(10)
 
-linked_list.insert(2, 15)
+linked_list.insert(0, 15)
+linked_list.traverse()
+print(linked_list.search(201))
 
-print(linked_list.length)
-print(linked_list)  # Output: 20 -> 202
+# print(linked_list.length)
+# print(linked_list)  # Output: 20 -> 202
