@@ -89,6 +89,25 @@ class Linkdedlist:
 
         return None
 
+    def get(self, index):
+        if not isinstance(index, int):
+            raise TypeError('Index must be an integer!')
+
+        if index < 0 or index >= self.length:
+            raise IndexError('Index out of bounds!')
+
+        linkded_list_index = 0
+
+        current = self.head
+        for _ in range(index):
+            if linkded_list_index == index:
+                break
+
+            linkded_list_index += 1
+            current = current.next
+
+        return current.value
+
 
 
 
@@ -100,8 +119,8 @@ linked_list.prepend(10)
 linked_list.prepend(10)
 
 linked_list.insert(0, 15)
-linked_list.traverse()
-print(linked_list.search(201))
-
+# linked_list.traverse()
+# print(linked_list.search(201))
+print(linked_list.get(1))
 # print(linked_list.length)
-# print(linked_list)  # Output: 20 -> 202
+print(linked_list)  # Output: 20 -> 202
