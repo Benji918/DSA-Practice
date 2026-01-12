@@ -93,7 +93,11 @@ class Linkdedlist:
         if not isinstance(index, int):
             raise TypeError('Index must be an integer!')
 
-        if index < 0 or index >= self.length:
+        if index < 0:
+            index = self.length + index # support negative indexing
+
+
+        if index >= self.length:
             raise IndexError('Index out of bounds!')
 
         linkded_list_index = 0
@@ -114,13 +118,13 @@ class Linkdedlist:
 linked_list = Linkdedlist()
 linked_list.append(20)
 linked_list.append(202)
-linked_list.append(202)
+linked_list.append(2024)
 linked_list.prepend(10)
 linked_list.prepend(10)
 
 linked_list.insert(0, 15)
 # linked_list.traverse()
 # print(linked_list.search(201))
-print(linked_list.get(1))
+print(linked_list.get(-3))
 # print(linked_list.length)
 print(linked_list)  # Output: 20 -> 202
