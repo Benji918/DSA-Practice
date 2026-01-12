@@ -101,8 +101,8 @@ class Linkdedlist:
             raise IndexError('Index out of bounds!')
 
         linkded_list_index = 0
-
         current = self.head
+
         for _ in range(index):
             if linkded_list_index == index:
                 break
@@ -110,8 +110,20 @@ class Linkdedlist:
             linkded_list_index += 1
             current = current.next
 
-        return current.value
+        return current
 
+    def set_value(self, index, value):
+        get_value = self.get(index)
+        if get_value is not None:
+            # current = self.head
+            #
+            # for _ in range(index):
+            #     current = current.next
+            get_value.value = value
+
+            return True
+
+        return False
 
 
 
@@ -125,6 +137,7 @@ linked_list.prepend(10)
 linked_list.insert(0, 15)
 # linked_list.traverse()
 # print(linked_list.search(201))
-print(linked_list.get(-3))
+# print(linked_list.get(-3))
+print(linked_list.set_value(index=-3, value=999))
 # print(linked_list.length)
 print(linked_list)  # Output: 20 -> 202
