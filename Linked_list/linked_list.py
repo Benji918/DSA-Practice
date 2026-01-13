@@ -135,7 +135,10 @@ class Linkdedlist:
 
 
     def remove(self, index):
-        if index < 0 or index >= self.length:
+        if index == -1:
+            return self.pop()
+
+        if index >= self.length:
             raise IndexError('Index out of bounds!')
 
         if index == 0:
@@ -187,5 +190,5 @@ linked_list.insert(0, 15)
 print(linked_list)
 print(linked_list.pop())
 print(linked_list)
-linked_list.remove(4)
+linked_list.remove(-1)
 print(linked_list)
