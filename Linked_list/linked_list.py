@@ -121,6 +121,18 @@ class Linkdedlist:
 
         return False
 
+    def pop(self):
+        if self.length == 0:
+            return None
+
+        if self.length == 1:
+            return self.pop_first()
+        else:
+            self.tail = self.get(self.length - 2)
+            self.tail.next = None
+
+        self.length -= 1
+
 
     def pop_first(self):
         if self.length == 0:
@@ -152,9 +164,9 @@ linked_list.insert(0, 15)
 # linked_list.traverse()
 # print(linked_list.search(201))
 # print(linked_list.get(-3))
-print(linked_list.set_value(index=-3, value=999))
-print(linked_list.length)
+# print(linked_list.set_value(index=-3, value=999))
+# print(linked_list.pop_first())
+# print(linked_list.length)
 print(linked_list)
-print(linked_list.pop_first())
-print(linked_list.length)
+print(linked_list.pop())
 print(linked_list)
