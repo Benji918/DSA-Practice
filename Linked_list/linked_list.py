@@ -134,6 +134,21 @@ class Linkdedlist:
         self.length -= 1
 
 
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            raise IndexError('Index out of bounds!')
+
+        if index == 0:
+            return self.pop_first()
+
+        poppped_node = self.get(index)
+        prev_node = self.get(index - 1)
+
+        prev_node.next = poppped_node.next
+        poppped_node.next = None
+
+        self.length -= 1
+
 
 
     def pop_first(self):
@@ -171,4 +186,6 @@ linked_list.insert(0, 15)
 # print(linked_list.length)
 print(linked_list)
 print(linked_list.pop())
+print(linked_list)
+linked_list.remove(4)
 print(linked_list)
