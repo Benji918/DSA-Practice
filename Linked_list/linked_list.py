@@ -115,15 +115,29 @@ class Linkdedlist:
     def set_value(self, index, value):
         get_value = self.get(index)
         if get_value is not None:
-            # current = self.head
-            #
-            # for _ in range(index):
-            #     current = current.next
             get_value.value = value
 
             return True
 
         return False
+
+
+    def pop_first(self):
+        if self.length == 0:
+            return None
+
+        popped_node = self.head
+
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+
+        popped_node.next = None
+        self.length -= 1
+
+        return popped_node.value
 
 
 
@@ -139,5 +153,8 @@ linked_list.insert(0, 15)
 # print(linked_list.search(201))
 # print(linked_list.get(-3))
 print(linked_list.set_value(index=-3, value=999))
-# print(linked_list.length)
-print(linked_list)  # Output: 20 -> 202
+print(linked_list.length)
+print(linked_list)
+print(linked_list.pop_first())
+print(linked_list.length)
+print(linked_list)
