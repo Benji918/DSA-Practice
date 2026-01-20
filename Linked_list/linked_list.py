@@ -69,7 +69,7 @@ class Linkdedlist:
         while node is not None:
             result.append(str(node.value))
             node = node.next
-        return " -> ".join(result)
+        return " -> ".join(result[::-1])
 
     def traverse(self):
         current = self.head
@@ -138,7 +138,7 @@ class Linkdedlist:
         if index == -1:
             return self.pop()
 
-        if index >= self.length:
+        if index >= self.length or index < -1:
             raise IndexError('Index out of bounds!')
 
         if index == 0:
@@ -171,6 +171,11 @@ class Linkdedlist:
 
         return popped_node.value
 
+    def clear(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+
 
 
 linked_list = Linkdedlist()
@@ -181,14 +186,15 @@ linked_list.prepend(10)
 linked_list.prepend(10)
 
 linked_list.insert(0, 15)
-# linked_list.traverse()
+linked_list.traverse()
 # print(linked_list.search(201))
 # print(linked_list.get(-3))
 # print(linked_list.set_value(index=-3, value=999))
 # print(linked_list.pop_first())
 # print(linked_list.length)
 print(linked_list)
-print(linked_list.pop())
-print(linked_list)
-linked_list.remove(-1)
-print(linked_list)
+# print(linked_list.pop())
+# print(linked_list)
+# linked_list.remove(-1)
+# linked_list.clear()
+# print(linked_list)
