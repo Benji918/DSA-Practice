@@ -153,6 +153,24 @@ class Linkdedlist:
         self.length -= 1
 
 
+    def remove_duplicates(self):
+        if self.head is None:
+            return
+
+        prev = self.head
+        current = prev.next
+
+        while current is not None:
+            if current.value == prev.value:
+                prev.next = current.next
+                self.length -= 1
+                current = prev.next
+
+            else:
+                prev = current
+                current = current.next
+
+
 
     def pop_first(self):
         if self.length == 0:
