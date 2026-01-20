@@ -176,7 +176,14 @@ class Linkdedlist:
         self.tail = None
         self.length = 0
 
+    def find_middle(self):
+        current = self.head
 
+        index = int(self.length // 2)
+
+        for _ in range(index):
+            current = current.next
+        return current
 
 linked_list = Linkdedlist()
 linked_list.append(20)
