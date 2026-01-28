@@ -12,6 +12,12 @@ class CSLinkedList():
         self.tail = new_node
         self.length = 1
 
+    def traverse(self):
+        current = self.head
+        for _ in range(self.length):
+            print(current.value)
+            current = current.next
+
 
     def append(self, value):
         new_node = Node(value)
@@ -56,6 +62,17 @@ class CSLinkedList():
         self.length += 1
 
 
+    def search(self, value):
+        current = self.head
+        index = 0
+        for _ in range(self.length):
+            if current.value == value:
+                return True, index
+            current = current.next
+            index += 1
+        return False
+
+
     def insert(self, index, value):
         if index < 0 or index > self.length:
             raise IndexError('Index out of bounds!')
@@ -90,5 +107,6 @@ cslinkedlist.append(3)
 cslinkedlist.prepend(45)
 cslinkedlist.prepend(45)
 cslinkedlist.insert(3,40)
+print(cslinkedlist.search(40))
 
 print(cslinkedlist.display())
