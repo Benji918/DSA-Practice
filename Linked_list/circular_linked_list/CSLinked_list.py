@@ -163,6 +163,25 @@ class CSLinkedList():
 
         return temp.value
 
+    def count_nodes(self):
+        if self.length == 0:
+            return 0
+
+        if self.length == 1:
+            return 1
+
+        current = self.head
+        counter = 0
+
+        while True:
+            current = current.next
+            counter += 1
+
+            if current == self.head:
+                break
+
+        return counter
+
     def remove(self, index):
         if self.length == 0:
             return self.pop_first()
@@ -177,6 +196,15 @@ class CSLinkedList():
         poppped_node.next = None
 
         self.length -=1
+
+        return poppped_node.value
+
+
+    def delete_all(self):
+        self.tail.next = None
+        self.head = None
+        self.tail = None
+        self.length = 0
 
 
 
@@ -195,6 +223,6 @@ cslinkedlist.insert(3,40)
 # print(cslinkedlist.set_value(index=3, value=100))
 print(cslinkedlist.display())
 print(cslinkedlist.remove(2))
-# print(cslinkedlist.pop())
+print(cslinkedlist.delete_all())
 
 print(cslinkedlist.display())
