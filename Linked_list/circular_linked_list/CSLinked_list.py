@@ -206,6 +206,52 @@ class CSLinkedList():
         self.tail = None
         self.length = 0
 
+    def split_list(self):
+        # empty list
+        if self.head is None or self.length == 0:
+            return None, None
+
+        # only one node -> first gets the node, second is empty
+        if self.length == 1:
+            first = CSLinkedList()
+            first.head = self.head
+            first.length = 1
+            first.head.next = first.head
+            return first, None
+
+        # find split point: if length even -> both get length/2,
+        # if odd -> first gets length//2 + 1, second gets length//2
+        half = (self.length + 1) // 2  # integer division; extra node goes to first when odd
+
+        # walk to the node that will be the last node of the first list
+        prev = None
+        cur = self.head
+        for _ in range(half - 1):
+            cur = cur.next
+        first_last = cur
+        second_head = first_last.next
+
+        # find last node of original list (so we can close second circular list)
+        tail = second_head
+        for _ in range(self.length - half - 1):
+            tail = tail.next
+        second_last = tail
+
+        # build first circular list
+        first = CSLinkedList()
+        first.head = self.head
+        first_last.next = first.head
+        first.length = half
+
+        # build second circular list
+        second = None
+        if self.length - half > 0:
+            second = CSLinkedList()
+            second.head = second_head
+            second_last.next = second.head
+            second.length = self.length - half
+
+        return first, second
 
 
 
